@@ -5,15 +5,17 @@ import express from 'express';
 //Create a port
 const PORT = 3005;
 
+app.use(express.urlencoded({extended: true}));
+
+
 const app = express();
-const orders =[];
+const appointments =[];
 
 
 app.use(express.urlencoded({extended: true}));
 
 
 app.use(express.static('public'));
-
 
 //Define a default route ("/")
 app.get('/', (req, res) => {
@@ -34,20 +36,21 @@ app.get('/confirm', (req, res) => {
 app.post('/submit-appointment', (req, res) => {
 
     //Create a JSON object to store the order data
-    const order = req.body;
+    const book = req.body;
     order.timestamp = new Date();
 
-    console.log(order);
+    console.log(book);
 
 
     //add the order object to our orders array
-    orders.push(order);
-    console.log(orders);
+    appointments.push(book);
+    console.log(appointments);
 
     //Display the confirmation page
     res.sendFile(`${import.meta.dirname}/views/confirm.html`);
 
     });
+
 
     //Start the server on the designated PORT
 app.listen(PORT, () => {
