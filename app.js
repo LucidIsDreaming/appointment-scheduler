@@ -6,6 +6,8 @@ import express from 'express';
 const PORT = 3005;
 
 const app = express();
+const orders =[];
+
 
 app.use(express.urlencoded({extended: true}));
 
@@ -22,6 +24,11 @@ app.get('/', (req, res) => {
 
 });
 
+app.get('/confirm', (req, res) => {
+    res.sendFile(`${import.meta.dirname}/views/confirm.html`);
+});
+
+
 //Start the server on the designated PORT
 app.listen(PORT, () => {
 
@@ -29,4 +36,23 @@ app.listen(PORT, () => {
         http://localhost:${PORT}`);
 
 });
+
+//Add a route for the form submission
+app.post('/submit-order', (req, res) => {
+
+    //Create a JSON object to store the order data
+    const order = req.body;
+    order.timestamp = new Date();
+
+    console.log(order);
+
+
+    //add the order object to our orders array
+    orders.push(order);
+    console.log(orders);
+
+    //Display the confirmation page
+    res.sendFile(`${import.meta.dirname}/views/confirm.html`);
+
+    });
 
