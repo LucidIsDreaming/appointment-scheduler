@@ -18,7 +18,7 @@ app.use(express.static('public'));
 //Define a default route ("/")
 app.get('/', (req, res) => {
     
-    res.send('Hello World!');
+    res.sendFile(`${import.meta.dirname}/views/home.html`)
 
     //res.sendFile(`${import.meta.dirname}/views/home.html`);
 
