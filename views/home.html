@@ -12,8 +12,16 @@
 
 </head>
 <body>
-    <form id="appointment-form" action="/submit-appointment" method="post">
+    <div id = "main">
+
+        <div id = "header">
         <h1>Appointment Scheduler</h1>
+        </div>
+
+    <form id="appointment-form" action="/submit-appointment" method="post">
+
+        <fieldset>
+
         <h2>Book an Appointment</h2>
         
         <label for="fname">First Name:</label>
@@ -30,7 +38,10 @@
         <label for = "time">Time</label>
         <input type="time" id="time" name="time">
 
+        </fieldset>
+
         <button type="submit" id="appointment-button">Place Appointment</button>
     </form>
+    </div>
 </body>
 </html>
