@@ -5,8 +5,6 @@ import express from 'express';
 //Create a port
 const PORT = 3005;
 
-app.use(express.urlencoded({extended: true}));
-
 
 const app = express();
 const appointments =[];
@@ -16,6 +14,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 app.use(express.static('public'));
+
 
 //Define a default route ("/")
 app.get('/', (req, res) => {
@@ -31,13 +30,12 @@ app.get('/confirm', (req, res) => {
 });
 
 
-
 //Add a route for the form submission
 app.post('/submit-appointment', (req, res) => {
 
     //Create a JSON object to store the order data
     const book = req.body;
-    order.timestamp = new Date();
+    book.timestamp = new Date();
 
     console.log(book);
 
@@ -50,6 +48,12 @@ app.post('/submit-appointment', (req, res) => {
     res.sendFile(`${import.meta.dirname}/views/confirm.html`);
 
     });
+
+//Add an admin route
+app.get('/admin', (req, res) => {
+    res.send(appointments);
+});
+
 
 
     //Start the server on the designated PORT
