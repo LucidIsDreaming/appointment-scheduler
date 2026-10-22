@@ -1,4 +1,4 @@
-   document.getElementById("pizza-form").onsubmit = () => {
+   document.getElementById("appointment-form").onsubmit = () => {
 
     let isValid = true;
 
@@ -17,6 +17,10 @@
         document.getElementById("err-lname").style.display = "block";
         isValid = false;
     }
+
+    
+    return isValid;
+
    };
 
    function clearErrors() {
