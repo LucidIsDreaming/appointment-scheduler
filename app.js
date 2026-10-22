@@ -29,16 +29,9 @@ app.get('/confirm', (req, res) => {
 });
 
 
-//Start the server on the designated PORT
-app.listen(PORT, () => {
-
-    console.log(`Server is running at 
-        http://localhost:${PORT}`);
-
-});
 
 //Add a route for the form submission
-app.post('/submit-order', (req, res) => {
+app.post('/submit-appointment', (req, res) => {
 
     //Create a JSON object to store the order data
     const order = req.body;
@@ -55,4 +48,13 @@ app.post('/submit-order', (req, res) => {
     res.sendFile(`${import.meta.dirname}/views/confirm.html`);
 
     });
+
+    //Start the server on the designated PORT
+app.listen(PORT, () => {
+
+    console.log(`Server is running at 
+        http://localhost:${PORT}`);
+
+});
+
 
